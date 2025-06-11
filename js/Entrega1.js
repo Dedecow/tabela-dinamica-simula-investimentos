@@ -7,7 +7,7 @@ const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
 
 
-function salvarNomeTabela() {
+function SalvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.')||'Anônimo';
     tbName.textContent = nomeDigitado;
     console.log(
@@ -16,7 +16,7 @@ function salvarNomeTabela() {
 }
 
 
-function salvarEmailTabela() {
+function SalvarEmailTabela() {
     emailDigitado = prompt('Digite seu email.')||'email@email.com';
     tbEmail.textContent = emailDigitado;
     console.log(
@@ -24,7 +24,7 @@ function salvarEmailTabela() {
     );
 }
 
-function salvarRendaTabela(){
+function SalvarRendaTabela(){
     rendaDigitada=prompt('Digite sua renda.')||'';
     tbRenda.textContent = rendaDigitada;
     console.log(
@@ -32,7 +32,7 @@ function salvarRendaTabela(){
     )
 }
 
-function dadosDigitados() {
+function DadosDigitados() {
     const mensagem =`
     DADOS PARA SIMULAÇÂO:
     -------------------------------
@@ -44,7 +44,7 @@ function dadosDigitados() {
     console.log('Dados globais:', {nomeDigitado, emailDigitado, rendaDigitada})
 }
 
-function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput){
+function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput){
     if (!nomeInput || nomeInput.trim() ===''){
         alert('O nome do investimento não pode estaz vazio. ')
         return false
@@ -64,7 +64,7 @@ function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput){
     return true;
 }
 
-function preencherInvestimentosPrompt() {
+function PreencherInvestimentosPrompt() {
     const investimentosColetados = [];
 
     const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
@@ -93,7 +93,7 @@ function preencherInvestimentosPrompt() {
 }
 
 //Chamada das funções referentes à informações do usuário.
-salvarNomeTabela();
-salvarEmailTabela();
-salvarRendaTabela();
-dadosDigitados()
+SalvarNomeTabela();
+SalvarEmailTabela();
+SalvarRendaTabela();
+DadosDigitados()
