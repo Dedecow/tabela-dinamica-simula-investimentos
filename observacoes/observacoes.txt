@@ -64,3 +64,9 @@ Os nomes das funções são claros e indicam que ação realizam. Utiliza a estr
 
 Para te ajudar
 Pode-se utilizar o starter template do Bootstrap para agilizar a montagem da estrutura HTML caso desejem. Ou podem optar por aplicar JS aos seus HTML desenvolvidos pelos próprios estudantes (seja em outros cursos ou para este projeto). - NA
+
+
+Pós Correção:
+Parabéns Andre, o projeto está indo muito bem, acho que de sugestão, que eu faria,
+1.  seria só concentrar as chamadas das funções no final do arquivo  OK
+ não muda nada, só para deixar todas juntas e facilitar ver a ordem que foram chamadas mesmo, mas nada que torne seu projeto errado. Continue evoluindo que o projeto vai ficar sensacional.

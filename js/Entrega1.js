@@ -14,7 +14,7 @@ function salvarNomeTabela() {
         `Nome registrado para simulação de investimentos foi ${nomeDigitado}`
     );
 }
-salvarNomeTabela();
+
 
 function salvarEmailTabela() {
     emailDigitado = prompt('Digite seu email.')||'email@email.com';
@@ -23,7 +23,6 @@ function salvarEmailTabela() {
         `Email registrado para simulação de investimentos foi ${emailDigitado}`
     );
 }
-salvarEmailTabela();
 
 function salvarRendaTabela(){
     rendaDigitada=prompt('Digite sua renda.')||'';
@@ -32,7 +31,6 @@ function salvarRendaTabela(){
         `Renda registrada para simulação de investimentos foi ${rendaDigitada}`
     )
 }
-salvarRendaTabela();
 
 function dadosDigitados() {
     const mensagem =`
@@ -45,7 +43,6 @@ function dadosDigitados() {
     alert (mensagem);
     console.log('Dados globais:', {nomeDigitado, emailDigitado, rendaDigitada})
 }
-dadosDigitados()
 
 function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput){
     if (!nomeInput || nomeInput.trim() ===''){
@@ -94,3 +91,9 @@ function preencherInvestimentosPrompt() {
 
     return investimentosColetados;
 }
+
+//Chamada das funções referentes à informações do usuário.
+salvarNomeTabela();
+salvarEmailTabela();
+salvarRendaTabela();
+dadosDigitados()
