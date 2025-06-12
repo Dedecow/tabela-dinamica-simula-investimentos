@@ -98,6 +98,9 @@ class Investimento {
 
 const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
 const parametroPetro = new Investimento("Petr4", 0.2707, "sim")
+parametroPoupanca.exibirInfo()
+parametroPetro.exibirInfo()
+
 
 //Chamada das funções referentes à informações do usuário.
 SalvarNomeTabela();
