@@ -75,8 +75,8 @@ function PreencherInvestimentosPrompt() {
         console.log(`--- Coletando dados para o ${ i + 1}º investimento ---`);
 
         const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
-        const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%, ou 20.60/29.35 para razão):`);
-        const riscoInput = prompt(`O ${i + 1}º investimento tem risco? Digite "sim" ou "não":`);
+        const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
+        const riscoInput = prompt(`No ${i + 1}º investimento voce pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
 
         const investimentoValidado = validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput);
 
