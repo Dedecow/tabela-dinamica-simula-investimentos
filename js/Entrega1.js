@@ -14,8 +14,6 @@ function SalvarNomeTabela() {
         `Nome registrado para simulação de investimentos foi ${nomeDigitado}`
     );
 }
-
-
 function SalvarEmailTabela() {
     emailDigitado = prompt('Digite seu email.')||'email@email.com';
     tbEmail.textContent = emailDigitado;
@@ -23,7 +21,6 @@ function SalvarEmailTabela() {
         `Email registrado para simulação de investimentos foi ${emailDigitado}`
     );
 }
-
 function SalvarRendaTabela(){
     rendaDigitada=prompt('Digite sua renda.')||'';
     tbRenda.textContent = rendaDigitada;
@@ -31,7 +28,6 @@ function SalvarRendaTabela(){
         `Renda registrada para simulação de investimentos foi ${rendaDigitada}`
     )
 }
-
 function DadosDigitados() {
     const mensagem =`
     DADOS PARA SIMULAÇÂO:
@@ -43,7 +39,6 @@ function DadosDigitados() {
     alert (mensagem);
     console.log('Dados globais:', {nomeDigitado, emailDigitado, rendaDigitada})
 }
-
 function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
         alert('O nome do investimento não pode estar vazio.');
@@ -63,7 +58,6 @@ function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     }
     return true;
 }
-
 function PreencherInvestimentosPrompt() {
     const investimentosColetados = [];
 
@@ -101,10 +95,9 @@ class Investimento {
         return `{${this.nome} retorna ${this.rendimento * 100} do capital investido, ${perderDinheiro} perder dinheiro se você investir. `
     }
 } 
+
 const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
 const parametroPetro = new Investimento("Petr4", 0.2707, "sim")
-
-
 
 //Chamada das funções referentes à informações do usuário.
 SalvarNomeTabela();
