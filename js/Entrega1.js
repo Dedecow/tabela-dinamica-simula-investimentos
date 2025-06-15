@@ -92,7 +92,7 @@ class Investimento {
     //metodo da classe
     exibirInfo(){
         const perderDinheiro = this.risco === "sim"? "mas você pode" : "sem risco de";
-        return `{${this.nome} retorna ${this.rendimento * 100} do capital investido, ${perderDinheiro} perder dinheiro se você investir. `
+        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir. `
     }
 } 
 
