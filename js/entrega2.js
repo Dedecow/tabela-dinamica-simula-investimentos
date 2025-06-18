@@ -7,28 +7,31 @@ const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
 
 
-function SalvarNomeTabela() {
+function salvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.')||'Anônimo';
     tbName.textContent = nomeDigitado;
     console.log(
         `Nome registrado para simulação de investimentos foi ${nomeDigitado}`
     );
 }
-function SalvarEmailTabela() {
+
+function salvarEmailTabela() {
     emailDigitado = prompt('Digite seu email.')||'email@email.com';
     tbEmail.textContent = emailDigitado;
     console.log(
         `Email registrado para simulação de investimentos foi ${emailDigitado}`
     );
 }
-function SalvarRendaTabela(){
+
+function salvarRendaTabela(){
     rendaDigitada=prompt('Digite sua renda.')||'';
     tbRenda.textContent = rendaDigitada;
     console.log(
         `Renda registrada para simulação de investimentos foi ${rendaDigitada}`
     )
 }
-function DadosDigitados() {
+
+function dadosDigitados() {
     const mensagem =`
     DADOS PARA SIMULAÇÂO:
     -------------------------------
@@ -39,26 +42,9 @@ function DadosDigitados() {
     alert (mensagem);
     console.log('Dados globais:', {nomeDigitado, emailDigitado, rendaDigitada})
 }
-function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
-    if (!nomeInput || nomeInput.trim() === '') {
-        alert('O nome do investimento não pode estar vazio.');
-        return false;
-    }
-    if (!rendimentoStrInput || rendimentoStrInput.trim() === '') {
-        alert('O rendimento esperado não pode estar vazio.');
-        return false;
-    }
-    if (parseFloat(rendimentoStrInput) <= 0) {
-        alert('O rendimento esperado precisa ser um número positivo. Ex: 0,05 = rendimento de 5%.');
-        return false;
-    }
-    if (!riscoInput || riscoInput.trim() === '') {
-        alert('A resposta precisa ser "sim" ou "não" quanto ao risco.');
-        return false;
-    }
-    return true;
-}
-function PreencherInvestimentosPrompt() {
+
+
+function preencherInvestimentosPrompt() {
     const investimentosColetados = [];
 
     const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
@@ -69,41 +55,51 @@ function PreencherInvestimentosPrompt() {
 
         const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
         const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
-        const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
+        const riscoInput = prompt(`O ${i + 1}º investimento tem risco? Digite "sim" ou "não":`);
 
-        if (ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput)) {
-            investimentosColetados.push({ nome: nomeInput, rendimento: rendimentoStrInput, risco: riscoInput });
-            console.log(`Investimento "${nomeInput}" adicionado com sucesso!`);
+        const dadosSaoValidos = validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput);
+
+        if (dadosSaoValidos) {
+            const investimento = {
+                nome: nomeInput.trim(),
+                rendimento: parseFloat(rendimentoStrInput.replace(',', '.')),
+                risco: riscoInput.trim().toLowerCase() === "sim"
+            };
+            
+            investimentosColetados.push(investimento);
+            console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
         } else {
             console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
         }
     }
 
     console.log('\n--- Preenchimento de investimentos concluído ---');
-
     return investimentosColetados;
 }
-class Investimento {
-    constructor(nome, rendimento, risco){
-        this.nome = nome;
-        this.rendimento = parseFloat(rendimento);
-        this.risco = risco.toLowerCase();
+
+function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
+    if (!nomeInput || nomeInput.trim() === '') {
+        alert('O nome do investimento não pode estar vazio.');
+        return false;
     }
-    //metodo da classe
-    exibirInfo(){
-        const perderDinheiro = this.risco === "sim"? "mas você pode" : "sem risco de";
-        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir. `
+
+    if (!/^\d*[,.]?\d+$/.test(rendimentoStrInput)) {
+        alert('Formato de rendimento inválido. Use números (ex: 0.05 ou 0,05).');
+        return false;
+    }   
+
+    const riscoLower = riscoInput.trim().toLowerCase();
+    if (riscoLower !== 'sim' && riscoLower !== 's' && riscoLower !== 'n' && riscoLower !== 'não' && riscoLower !== 'nao') {
+        alert('O risco deve ser "sim" ou "não".');
+        return false;
     }
-} 
 
-const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
-const parametroPetro = new Investimento("Petr4", 0.2707, "sim")
-console.log(parametroPoupanca.exibirInfo())
-console.log(parametroPetro.exibirInfo())
+    return true;
+}
 
 
-//Chamada das funções referentes à informações do usuário.
-SalvarNomeTabela();
-SalvarEmailTabela();
-SalvarRendaTabela();
-DadosDigitados()
+//chamadas de função
+salvarNomeTabela();
+salvarEmailTabela();
+salvarRendaTabela();
+dadosDigitados()
