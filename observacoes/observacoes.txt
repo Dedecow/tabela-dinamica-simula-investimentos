@@ -3,3 +3,4 @@
 3. Transformar os dados do usuário em um objeto antes de salvar no localstorage
 4. salvar os objetos da array no localstorage
 5. Criar a tabela dinamicamente para acomodar os dados da arrays
+6. Perguntar ao professor qual o uso da classe

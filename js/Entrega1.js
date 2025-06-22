@@ -64,8 +64,6 @@ function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     return true;
 }
 
----
-
 function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
     const investimento = {
         nome: nome.trim(),
@@ -75,8 +73,6 @@ function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
 }
-
----
 
 function PreencherInvestimentosPrompt() {
     console.log('Quantos investimentos vamos adicionar?');
@@ -100,7 +96,6 @@ function PreencherInvestimentosPrompt() {
     console.log('\n--- Preenchimento de investimentos concluído ---');
 }
 
----
 
 class Investimento {
     constructor(nome, rendimento, risco) {
