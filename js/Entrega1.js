@@ -64,14 +64,45 @@ function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     return true;
 }
 
+
 function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
-    const investimento = {
-        nome: nome.trim(),
-        rendimento: parseFloat(rendimentoStr.replace(',', '.')),
-        risco: riscoStr.trim().toLowerCase() !== "nao"
-    };
+    const investimento = new Investimento(nome.trim(), parseFloat(rendimentoStr.replace(',', '.')), riscoStr.trim());
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
+    salvarInvestimentosNoLocalStorage();
+}
+
+function salvarInvestimentosNoLocalStorage() {
+    const investimentosParaSalvar = investimentosColetados.map(inv => ({
+        nome: inv.nome,
+        rendimento: inv.rendimento,
+        risco: inv.risco
+    }));
+    const investimentosJSON = JSON.stringify(investimentosParaSalvar);
+    localStorage.setItem('meusInvestimentos', investimentosJSON);
+    console.log('Investimentos salvos no localStorage com sucesso!');
+}
+
+function carregarInvestimentosDoLocalStorage() {
+    const investimentosJSON = localStorage.getItem('meusInvestimentos');
+    const dadosCarregados = JSON.parse(investimentosJSON);
+    if(investimentosColetados.length != 0){
+        // Decidir o que fazer quando a array ainda estiver com os dados que estamos tentando retornar a ela, posso carregar direto no DOM?
+        limpaArray_PreencheComDadosLocalStorage(dadosCarregados);
+        console.log('Investimentos carregados do localStorage com sucesso!');
+    }
+}
+
+function limpaArray_PreencheComDadosLocalStorage(dados) {
+    // Limpa a array global antes de preencher com os dados novos/carregados
+    investimentosColetados.length = 0;
+
+    // Itera sobre cada dado plano e recria como instância da classe Investimento
+    dados.forEach(dado => {
+        const investimentoInstancia = new Investimento(dado.nome, dado.rendimento, dado.risco);
+        investimentosColetados.push(investimentoInstancia);
+    });
+    console.log('Array global de investimentos preenchida com sucesso!');
 }
 
 function PreencherInvestimentosPrompt() {
@@ -96,14 +127,33 @@ function PreencherInvestimentosPrompt() {
     console.log('\n--- Preenchimento de investimentos concluído ---');
 }
 
+---
 
 class Investimento {
     constructor(nome, rendimento, risco) {
         this.nome = nome;
         this.rendimento = parseFloat(rendimento);
-        this.risco = risco.toLowerCase();
+        this.risco = (risco.trim().toLowerCase() === "sim" ? "sim" : "nao");
     }
 
     exibirInfo() {
         const perderDinheiro = this.risco === "sim" ? "mas você pode" : "sem risco de";
-        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro
+        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
+    }
+}
+
+---
+
+carregarInvestimentosDoLocalStorage();
+
+const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
+const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
+
+console.log(parametroPoupanca.exibirInfo());
+console.log(parametroPetro.exibirInfo());
+
+SalvarNomeTabela();
+SalvarEmailTabela();
+SalvarRendaTabela();
+DadosDigitados();
+PreencherInvestimentosPrompt();
