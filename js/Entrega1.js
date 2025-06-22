@@ -83,26 +83,65 @@ function salvarInvestimentosNoLocalStorage() {
     console.log('Investimentos salvos no localStorage com sucesso!');
 }
 
-function carregarInvestimentosDoLocalStorage() {
-    const investimentosJSON = localStorage.getItem('meusInvestimentos');
-    const dadosCarregados = JSON.parse(investimentosJSON);
-    if(investimentosColetados.length != 0){
-        // Decidir o que fazer quando a array ainda estiver com os dados que estamos tentando retornar a ela, posso carregar direto no DOM?
-        limpaArray_PreencheComDadosLocalStorage(dadosCarregados);
-        console.log('Investimentos carregados do localStorage com sucesso!');
+function verificarArrayPreenchida() {
+    if (investimentosColetados.length > 0) {
+        console.log('Array já contém dados - não carregará do localStorage.');
+        return true;
     }
+    return false;
 }
 
-function limpaArray_PreencheComDadosLocalStorage(dadoStorage) {
-    // Limpa a array global antes de preencher com os dados novos/carregados
-    investimentosColetados.length = 0;
+function verificarDadosLocalStorageValidos(dados) {
+    if (!Array.isArray(dados)) {
+        console.log('Dados no localStorage não estão no formato esperado.');
+        return false;
+    }
 
-    //pegando cada item e devolvendo ao formato da classe investimento
-    dadoStorage.forEach(function(dadoStorage) {
-        const objetoInvestimento = new Investimento(dadoStorage.nome, dadoStorage.rendimento, dadoStorage.risco);
-        investimentosColetados.push(objetoInvestimento);
+    for (const item of dados) {
+        if (!item.nome || typeof item.nome !== 'string') {
+            console.log('Item inválido: nome ausente ou não é string.');
+            return false;
+        }
+        if (isNaN(item.rendimento) || typeof item.rendimento !== 'number') {
+            console.log(`Rendimento inválido para ${item.nome}.`);
+            return false;
+        }
+        if (item.risco !== "sim" && item.risco !== "nao") {
+            console.log(`Risco inválido para ${item.nome}.`);
+            return false;
+        }
+    }
+    return true;
+}
+
+function carregarInvestimentosDoLocalStorage() {
+    if (verificarArrayPreenchida()) return;
+
+    const investimentosJSON = localStorage.getItem('meusInvestimentos');
+    if (!investimentosJSON) {
+        console.log('Nenhum dado no localStorage.');
+        return;
+    }
+
+    const dadosCarregados = JSON.parse(investimentosJSON);
+        
+    if (!verificarDadosLocalStorageValidos(dadosCarregados)) {
+        console.log('Dados inválidos no localStorage.');
+        return;
+    }
+
+    preencherArrayComDadosLocalStorage(dadosCarregados);
+}
+
+function preencherArrayComDadosLocalStorage(dados) {
+    investimentosColetados.length = 0;
+    
+    dados.forEach(dado => {
+        investimentosColetados.push(
+            new Investimento(dado.nome, dado.rendimento, dado.risco)
+        );
     });
-    console.log('Array global de investimentos preenchida com sucesso!');
+    console.log('Dados carregados com sucesso!');
 }
 
 function preencherInvestimentosPrompt() {
