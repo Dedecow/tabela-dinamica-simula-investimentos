@@ -99,7 +99,7 @@ function limpaArray_PreencheComDadosLocalStorage(dadoStorage) {
 
     //pegando cada item e devolvendo ao formato da classe investimento
     dadoStorage.forEach(function(dadoStorage) {
-        const objetoInvestimento = new Investimento(dado.nome, dado.rendimento, dado.risco);
+        const objetoInvestimento = new Investimento(dadoStorage.nome, dadoStorage.rendimento, dadoStorage.risco);
         investimentosColetados.push(objetoInvestimento);
     });
     console.log('Array global de investimentos preenchida com sucesso!');
