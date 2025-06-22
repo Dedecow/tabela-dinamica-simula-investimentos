@@ -93,14 +93,14 @@ function carregarInvestimentosDoLocalStorage() {
     }
 }
 
-function limpaArray_PreencheComDadosLocalStorage(dados) {
+function limpaArray_PreencheComDadosLocalStorage(dadoStorage) {
     // Limpa a array global antes de preencher com os dados novos/carregados
     investimentosColetados.length = 0;
 
-    // Itera sobre cada dado plano e recria como instância da classe Investimento
-    dados.forEach(dado => {
-        const investimentoInstancia = new Investimento(dado.nome, dado.rendimento, dado.risco);
-        investimentosColetados.push(investimentoInstancia);
+    //pegando cada item e devolvendo ao formato da classe investimento
+    dadoStorage.forEach(function(dadoStorage) {
+        const objetoInvestimento = new Investimento(dado.nome, dado.rendimento, dado.risco);
+        investimentosColetados.push(objetoInvestimento);
     });
     console.log('Array global de investimentos preenchida com sucesso!');
 }
