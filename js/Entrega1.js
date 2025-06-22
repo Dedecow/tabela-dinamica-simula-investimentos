@@ -9,7 +9,7 @@ const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
 
 
-function SalvarNomeTabela() {
+function salvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.') || 'Anônimo';
     if (tbName) {
         tbName.textContent = nomeDigitado;
@@ -17,7 +17,7 @@ function SalvarNomeTabela() {
     console.log(`Nome registrado para simulação de investimentos foi ${nomeDigitado}`);
 }
 
-function SalvarEmailTabela() {
+function salvarEmailTabela() {
     emailDigitado = prompt('Digite seu email.') || 'email@email.com';
     if (tbEmail) {
         tbEmail.textContent = emailDigitado;
@@ -25,7 +25,7 @@ function SalvarEmailTabela() {
     console.log(`Email registrado para simulação de investimentos foi ${emailDigitado}`);
 }
 
-function SalvarRendaTabela() {
+function salvarRendaTabela() {
     rendaDigitada = prompt('Digite sua renda.');
     if (tbRenda) {
         tbRenda.textContent = rendaDigitada;
@@ -33,7 +33,7 @@ function SalvarRendaTabela() {
     console.log(`Renda registrada para simulação de investimentos foi ${rendaDigitada}`);
 }
 
-function DadosDigitados() {
+function dadosDigitados() {
     const mensagem = `
     DADOS PARA SIMULAÇÃO:
     -------------------------------
@@ -105,7 +105,7 @@ function limpaArray_PreencheComDadosLocalStorage(dadoStorage) {
     console.log('Array global de investimentos preenchida com sucesso!');
 }
 
-function PreencherInvestimentosPrompt() {
+function preencherInvestimentosPrompt() {
     console.log('Quantos investimentos vamos adicionar?');
     const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
     const numInvestimentos = parseInt(numInvestimentosStr) || 1;
@@ -148,8 +148,8 @@ const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
 console.log(parametroPoupanca.exibirInfo());
 console.log(parametroPetro.exibirInfo());
 
-SalvarNomeTabela();
-SalvarEmailTabela();
-SalvarRendaTabela();
-DadosDigitados();
-PreencherInvestimentosPrompt();
+salvarNomeTabela();
+salvarEmailTabela();
+salvarRendaTabela();
+dadosDigitados();
+preencherInvestimentosPrompt();
