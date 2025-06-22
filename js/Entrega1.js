@@ -8,6 +8,18 @@ const tbName = document.getElementById('tb-name');
 const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
 
+class Investimento {
+    constructor(nome, rendimento, risco) {
+        this.nome = nome;
+        this.rendimento = parseFloat(rendimento);
+        this.risco = (risco.trim().toLowerCase() === "sim" ? "sim" : "nao");
+    }
+
+    exibirInfo() {
+        const perderDinheiro = this.risco === "sim" ? "mas você pode" : "sem risco de";
+        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
+    }
+}
 
 function salvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.') || 'Anônimo';
@@ -166,18 +178,7 @@ function preencherInvestimentosPrompt() {
     console.log('\n--- Preenchimento de investimentos concluído ---');
 }
 
-class Investimento {
-    constructor(nome, rendimento, risco) {
-        this.nome = nome;
-        this.rendimento = parseFloat(rendimento);
-        this.risco = (risco.trim().toLowerCase() === "sim" ? "sim" : "nao");
-    }
 
-    exibirInfo() {
-        const perderDinheiro = this.risco === "sim" ? "mas você pode" : "sem risco de";
-        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
-    }
-}
 
 carregarInvestimentosDoLocalStorage();
 
