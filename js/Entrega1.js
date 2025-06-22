@@ -20,6 +20,11 @@ class Investimento {
         return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
     }
 }
+const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
+const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
+
+console.log(parametroPoupanca.exibirInfo());
+console.log(parametroPetro.exibirInfo());
 
 function salvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.') || 'Anônimo';
@@ -178,16 +183,7 @@ function preencherInvestimentosPrompt() {
     console.log('\n--- Preenchimento de investimentos concluído ---');
 }
 
-
-
 carregarInvestimentosDoLocalStorage();
-
-const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
-const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-
-console.log(parametroPoupanca.exibirInfo());
-console.log(parametroPetro.exibirInfo());
-
 salvarNomeTabela();
 salvarEmailTabela();
 salvarRendaTabela();
