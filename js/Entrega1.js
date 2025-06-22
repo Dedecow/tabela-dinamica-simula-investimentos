@@ -127,8 +127,6 @@ function PreencherInvestimentosPrompt() {
     console.log('\n--- Preenchimento de investimentos concluído ---');
 }
 
----
-
 class Investimento {
     constructor(nome, rendimento, risco) {
         this.nome = nome;
@@ -141,8 +139,6 @@ class Investimento {
         return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
     }
 }
-
----
 
 carregarInvestimentosDoLocalStorage();
 
