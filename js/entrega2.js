@@ -104,7 +104,7 @@ function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     }
     const riscoLower = riscoInput.trim().toLowerCase();
     if (riscoLower !== "sim" && riscoLower !== "nao") {
-        alert('A resposta para o risco precisa ser "sim" ou "não".');
+        alert('A resposta para o risco precisa ser "sim" ou "nao".');
         return false;
     }
     return true;
@@ -209,9 +209,10 @@ function renderizarTabelaInvestimentos() {
 }
 
 function carregarInvestimentosPadrao() {
+    const parametroVazio = new Investimento("Poupança", 0.0500, "nao");
     const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
     const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-    investimentosColetados.push(parametroPoupanca, parametroPetro);
+    investimentosColetados.push(parametroVazio, parametroPoupanca, parametroPetro);
 }
 
 function inicializarApp() {
