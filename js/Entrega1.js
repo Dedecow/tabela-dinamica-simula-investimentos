@@ -78,20 +78,21 @@ function preencherInvestimentosPrompt() {
         console.log(`--- Coletando dados para o ${i + 1}º investimento ---`);
 
         const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
-        const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
+        const rendimentoInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
         const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
 
-        if (ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput)) {
-            adicionarInvestimento(nomeInput, rendimentoStrInput, riscoInput);
+        if (validarDadosInvestimento(nomeInput, rendimentoInput, riscoInput)) {
+            adicionarInvestimento(nomeInput, rendimentoInput, riscoInput);
         } else {
             console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
         }
     }
 
     console.log('\n--- Preenchimento de investimentos concluído ---');
+    renderizarTabelaInvestimentos();
 }
 
-function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
+function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
         alert('O nome do investimento não pode estar vazio.');
         return false;
@@ -115,7 +116,6 @@ function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
     salvarInvestimentosNoLocalStorage();
-    renderizarTabelaInvestimentos();
 }
 
 function salvarInvestimentosNoLocalStorage() {
