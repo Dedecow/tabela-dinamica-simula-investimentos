@@ -119,7 +119,7 @@ function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
     salvarInvestimentosNoLocalStorage();
-    //aqui quero renderizar os dados da array no DOM-tabela-investimento
+    renderizarTabelaInvestimentos();
 }
 
 function salvarInvestimentosNoLocalStorage() {
@@ -192,21 +192,31 @@ function carregarInvestimentosDoLocalStorage() {
     }
 
     preencherArrayComDadosLocalStorage(dadosCarregados);
+    renderizarTabelaInvestimentos();
 }
-function renderizarTabelaInvestimentos(){
+
+function adicionarInvestimentoNaDOM(investimento, corpoDaTabela) {
+    const linhaHTML = investimento.criarLinhaTabela();
+    corpoDaTabela.innerHTML += linhaHTML;
+}
+
+function renderizarTabelaInvestimentos() {
     const tabelaCorpo = document.getElementById('investimentos-body');
-    tabelaCorpo.innerHTML = '';
+    tabelaCorpo.innerHTML = ''; 
 
-    const linhaTabela = tbodyInvestimentos.insertRow();
-    linhaTabela.innerHTML = Investimento.criarLinhaTabela();
-   
+    investimentosColetados.forEach(function(investimento) {
+        adicionarInvestimentoNaDOM(investimento, tabelaCorpo);
+    });
+
+    console.log('Tabela de investimentos atualizada no DOM!');
 }
 
 
-
-carregarInvestimentosDoLocalStorage();
-salvarNomeTabela();
-salvarEmailTabela();
-salvarRendaTabela();
-dadosDigitados();
-preencherInvestimentosPrompt();
+function iniciar(){
+    carregarInvestimentosDoLocalStorage();
+    salvarNomeTabela();
+    salvarEmailTabela();
+    salvarRendaTabela();
+    dadosDigitados();
+    preencherInvestimentosPrompt();
+}
