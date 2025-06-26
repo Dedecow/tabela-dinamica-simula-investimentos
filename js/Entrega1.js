@@ -221,3 +221,4 @@ function inicializarApp() {
     dadosDigitados();
     preencherInvestimentosPrompt();
 }
+inicializarApp();
