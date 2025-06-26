@@ -15,7 +15,15 @@ class Investimento {
         this.rendimento = parseFloat(rendimento);
         this.risco = (risco.trim().toLowerCase() === "sim" ? "sim" : "nao");
     }
-
+    criarLinhaTabela() {
+        return `
+            <td>${this.nome}</td>
+            <td>${(this.rendimento * 100).toFixed(2)}%</td>
+            <td class="${this.risco === 'sim' ? 'risco' : 'sem-risco'}">
+                ${this.risco === 'sim' ? ' Com risco' : ' Sem risco'}
+            </td>
+        `;
+    }
     exibirInfo() {
         const perderDinheiro = this.risco === "sim" ? "mas você pode" : "sem risco de";
         return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
@@ -184,6 +192,14 @@ function carregarInvestimentosDoLocalStorage() {
     }
 
     preencherArrayComDadosLocalStorage(dadosCarregados);
+}
+function renderizarTabelaInvestimentos(){
+    const tabelaCorpo = document.getElementById('investimentos-body');
+    tabelaCorpo.innerHTML = '';
+
+    const linhaTabela = tbodyInvestimentos.insertRow();
+    linhaTabela.innerHTML = Investimento.criarLinhaTabela();
+   
 }
 
 
