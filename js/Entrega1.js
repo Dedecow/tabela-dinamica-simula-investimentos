@@ -7,6 +7,7 @@ let rendaDigitada = '';
 const tbName = document.getElementById('tb-name');
 const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
+const tbodyInvestimentos =document.getElementById('investimentos-body')
 
 class Investimento {
     constructor(nome, rendimento, risco) {
@@ -62,6 +63,29 @@ function dadosDigitados() {
     console.log('Dados globais:', { nomeDigitado, emailDigitado, rendaDigitada });
 }
 
+// ###################### FUNÇÔES DE INVESTIMENTO ##################
+
+function preencherInvestimentosPrompt() {
+    console.log('Quantos investimentos vamos adicionar?');
+    const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
+    const numInvestimentos = parseInt(numInvestimentosStr) || 1;
+
+    for (let i = 0; i < numInvestimentos; i++) {
+        console.log(`--- Coletando dados para o ${i + 1}º investimento ---`);
+
+        const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
+        const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
+        const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
+
+        if (ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput)) {
+            adicionarInvestimento(nomeInput, rendimentoStrInput, riscoInput);
+        } else {
+            console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
+        }
+    }
+
+    console.log('\n--- Preenchimento de investimentos concluído ---');
+}
 
 function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
@@ -81,12 +105,13 @@ function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     return true;
 }
 
-
 function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
+
     const investimento = new Investimento(nome.trim(), parseFloat(rendimentoStr.replace(',', '.')), riscoStr.trim());
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
     salvarInvestimentosNoLocalStorage();
+    //aqui quero renderizar os dados da array no DOM-tabela-investimento
 }
 
 function salvarInvestimentosNoLocalStorage() {
@@ -98,6 +123,17 @@ function salvarInvestimentosNoLocalStorage() {
     const investimentosJSON = JSON.stringify(investimentosParaSalvar);
     localStorage.setItem('meusInvestimentos', investimentosJSON);
     console.log('Investimentos salvos no localStorage com sucesso!');
+}
+
+function preencherArrayComDadosLocalStorage(dados) {
+    investimentosColetados.length = 0;
+    
+    dados.forEach(dado => {
+        investimentosColetados.push(
+            new Investimento(dado.nome, dado.rendimento, dado.risco)
+        );
+    });
+    console.log('Dados carregados com sucesso!');
 }
 
 function verificarArrayPreenchida() {
@@ -150,38 +186,7 @@ function carregarInvestimentosDoLocalStorage() {
     preencherArrayComDadosLocalStorage(dadosCarregados);
 }
 
-function preencherArrayComDadosLocalStorage(dados) {
-    investimentosColetados.length = 0;
-    
-    dados.forEach(dado => {
-        investimentosColetados.push(
-            new Investimento(dado.nome, dado.rendimento, dado.risco)
-        );
-    });
-    console.log('Dados carregados com sucesso!');
-}
 
-function preencherInvestimentosPrompt() {
-    console.log('Quantos investimentos vamos adicionar?');
-    const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
-    const numInvestimentos = parseInt(numInvestimentosStr) || 1;
-
-    for (let i = 0; i < numInvestimentos; i++) {
-        console.log(`--- Coletando dados para o ${i + 1}º investimento ---`);
-
-        const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
-        const rendimentoStrInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
-        const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
-
-        if (ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput)) {
-            adicionarInvestimento(nomeInput, rendimentoStrInput, riscoInput);
-        } else {
-            console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
-        }
-    }
-
-    console.log('\n--- Preenchimento de investimentos concluído ---');
-}
 
 carregarInvestimentosDoLocalStorage();
 salvarNomeTabela();
