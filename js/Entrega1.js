@@ -25,7 +25,7 @@ class Investimento {
             <td>${this.nome}</td>
             <td>${(this.rendimento * 100).toFixed(2)}%</td>
             <td class="${this.risco === 'sim' ? 'risco' : 'sem-risco'}">
-                ${this.risco === 'sim' ? ' Com risco' : ' Sem risco'}
+                ${this.risco === 'sim' ? ' COM RISCO' : ' SEM RISCO'}
             </td>
         `;
     }
