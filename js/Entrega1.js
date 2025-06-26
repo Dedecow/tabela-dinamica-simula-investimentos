@@ -208,18 +208,27 @@ function renderizarTabelaInvestimentos() {
     console.log('Tabela de investimentos atualizada no DOM!');
 }
 
-function inicializarApp() {
+function carregarInvestimentosPadrao() {
     const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
     const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-
     investimentosColetados.push(parametroPoupanca, parametroPetro);
-    renderizarTabelaInvestimentos();
+}
+
+function inicializarApp() {
 
     carregarInvestimentosDoLocalStorage();
+
+    if (investimentosColetados.length === 0) {
+        carregarInvestimentosPadrao();
+    }
+
+    renderizarTabelaInvestimentos();
+
     salvarNomeTabela();
     salvarEmailTabela();
     salvarRendaTabela();
     dadosDigitados();
     preencherInvestimentosPrompt();
 }
+
 inicializarApp();
