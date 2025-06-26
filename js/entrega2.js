@@ -209,7 +209,7 @@ function renderizarTabelaInvestimentos() {
 }
 
 function carregarInvestimentosPadrao() {
-    const parametroVazio = new Investimento("Poupança", 0.0500, "nao");
+    const parametroVazio = new Investimento("---", 0, "nao");
     const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
     const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
     investimentosColetados.push(parametroVazio, parametroPoupanca, parametroPetro);
