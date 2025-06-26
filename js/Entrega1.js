@@ -31,12 +31,6 @@ class Investimento {
     }
 }
 
-const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
-const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-
-console.log(parametroPoupanca.exibirInfo());
-console.log(parametroPetro.exibirInfo());
-
 function salvarNomeTabela() {
     nomeDigitado = prompt('Digite seu nome.') || 'Anônimo';
     if (tbName) {
@@ -213,8 +207,13 @@ function renderizarTabelaInvestimentos() {
     console.log('Tabela de investimentos atualizada no DOM!');
 }
 
+function inicializarApp() {
+    const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
+    const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
 
-function iniciar(){
+    investimentosColetados.push(parametroPoupanca, parametroPetro);
+    renderizarTabelaInvestimentos();
+
     carregarInvestimentosDoLocalStorage();
     salvarNomeTabela();
     salvarEmailTabela();
