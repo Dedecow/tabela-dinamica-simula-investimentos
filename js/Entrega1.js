@@ -12,7 +12,7 @@ const tbodyInvestimentos =document.getElementById('investimentos-body')
 class Investimento {
     constructor(nomeImput, rendimentoImput, riscoImput) {
         this.nome = nomeImput.trim();
-        this.rendimento = parseFloat(rendimentoImput.replace(',','.'));
+        this.rendimento = typeof rendimentoImput === 'string' ? parseFloat(rendimentoImput.replace(',','.')):rendimentoImput; //quando eu recebo do storage ele é number e não string
         this.risco = this.normalizarRisco(riscoImput);
     }
 
@@ -111,7 +111,7 @@ function ValidarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
 
 function adicionarInvestimento(nome, rendimentoStr, riscoStr) {
 
-    const investimento = new Investimento(nome.trim(), parseFloat(rendimentoStr.replace(',', '.')), riscoStr.trim());
+    const investimento = new Investimento(nome, rendimentoStr, riscoStr);
     investimentosColetados.push(investimento);
     console.log(`Investimento "${investimento.nome}" adicionado com sucesso!`);
     salvarInvestimentosNoLocalStorage();
@@ -192,9 +192,10 @@ function carregarInvestimentosDoLocalStorage() {
 }
 
 function adicionarInvestimentoNaDOM(investimento, corpoDaTabela) {
-    const linhaHTML = investimento.criarLinhaTabela();
+    const linhaHTML = `<tr>${investimento.criarLinhaTabela()}</tr>`;
     corpoDaTabela.innerHTML += linhaHTML;
 }
+
 
 function renderizarTabelaInvestimentos() {
     const tabelaCorpo = document.getElementById('investimentos-body');
