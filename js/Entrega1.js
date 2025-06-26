@@ -10,11 +10,16 @@ const tbRenda = document.getElementById('tb-renda');
 const tbodyInvestimentos =document.getElementById('investimentos-body')
 
 class Investimento {
-    constructor(nome, rendimento, risco) {
-        this.nome = nome;
-        this.rendimento = parseFloat(rendimento);
-        this.risco = (risco.trim().toLowerCase() === "sim" ? "sim" : "nao");
+    constructor(nomeImput, rendimentoImput, riscoImput) {
+        this.nome = nomeImput.trim();
+        this.rendimento = parseFloat(rendimentoImput.replace(',','.'));
+        this.risco = this.normalizarRisco(riscoImput);
     }
+
+    normalizarRisco(riscoImput){
+        return riscoImput.trim().toLowerCase() === "sim" ? "sim" : 'nao'; 
+    }
+
     criarLinhaTabela() {
         return `
             <td>${this.nome}</td>
@@ -24,11 +29,8 @@ class Investimento {
             </td>
         `;
     }
-    exibirInfo() {
-        const perderDinheiro = this.risco === "sim" ? "mas você pode" : "sem risco de";
-        return `${this.nome} retorna ${this.rendimento * 100}% do capital investido, ${perderDinheiro} perder dinheiro se você investir.`;
-    }
 }
+
 const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
 const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
 
