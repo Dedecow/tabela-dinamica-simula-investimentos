@@ -1,59 +1,237 @@
+/* Variáveis de Cores Simples */
+:root {
+    --primary-blue: #007bff; /* Azul primário para links e botões */
+    --text-color-dark: #333; /* Texto principal */
+    --text-color-light: #fff; /* Texto em fundos escuros */
+    --background-light: #f4f4f4; /* Fundo geral claro */
+    --card-background: #fff; /* Fundo dos blocos de conteúdo */
+    --border-color: #ddd; /* Bordas de elementos */
+    --error-color: #dc3545; /* Cor para mensagens de erro */
+    --success-color: #28a745; /* Verde para sucesso/sem risco */
+}
+
+/* Estilos Globais */
 body {
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Fonte simples e legível */
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: var(--text-color-dark);
+    background-color: var(--background-light);
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 div {
-    margin-bottom: 30px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
+    width: 100%;
+    max-width: 700px; /* Largura máxima mais contida */
+    margin-bottom: 20px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color); /* Borda simples */
+    border-radius: 5px; /* Cantos levemente arredondados */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+h1, h2 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+p strong {
+    color: var(--primary-blue);
+}
+
+/* --- Formulários --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre os campos */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+button[type="submit"],
+.btn-adicionar,
+.btn-confirmar,
+.btn-cancelar {
+    background-color: var(--primary-blue);
+    color: var(--text-color-light);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover,
+.btn-adicionar:hover,
+.btn-confirmar:hover {
+    background-color: #0056b3; /* Tom mais escuro do azul */
+}
+
+/* --- Tabelas --- */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0;
+    margin-top: 15px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
 
-#table-identifica tr:first-child,
-#table-investimento tr:first-child {
-    background-color: #0056b3; /* Azul AMBIMA */
-    color: white;
+table thead tr {
+    background-color: var(--primary-blue);
+    color: var(--text-color-light);
 }
 
-#table-identifica tr:first-child td,
-#table-investimento tr:first-child td {
-    padding: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.risco {
+    color: var(--error-color); /* Vermelho para risco */
+    font-weight: bold;
+}
+
+.sem-risco {
+    color: var(--success-color); /* Verde para sem risco */
+    font-weight: bold;
+}
+
+/* --- Modal --- */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 450px; /* Largura máxima mais básica */
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group div { /* Para os radio buttons */
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-confirmar {
+    background-color: var(--success-color); /* Verde para 'Adicionar' */
+}
+
+.btn-confirmar:hover {
+    background-color: #218838;
+}
+
+.btn-cancelar {
+    background-color: var(--border-color); /* Cinza para 'Cancelar' */
+    color: var(--text-color-dark);
+}
+
+.btn-cancelar:hover {
+    background-color: #c4c4c4;
+}
+
+#form-errors {
+    color: var(--error-color);
     font-size: 0.85em;
-    letter-spacing: 0.5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-#table-identifica tr:not(:first-child) td,
-#table-investimento tr:not(:first-child) td {
-    padding: 15px;
-    border-bottom: 1px solid #e9ecef;
-}
+/* Responsividade básica (ainda mais simples) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
 
-#tb-name, #tb-email, #tb-renda,
-#tb-investimento, #tb-rendimento, #tb-risco {
-    font-weight: 500;
-    color: #495057;
-}
+    div, .modal-content {
+        padding: 15px;
+    }
 
-#tb-renda, #tb-rendimento {
-    color: #28a745; /* Verde para valores positivos */
-    font-weight: 600;
-}
+    h1 {
+        font-size: 1.5em;
+    }
 
-#tb-risco {
-    font-weight: 600;
-}
+    h2 {
+        font-size: 1.2em;
+    }
 
+    table th, table td {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+}

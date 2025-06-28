@@ -12,8 +12,59 @@ const tbodyInvestimentos =document.getElementById('investimentos-body')
 const form = document.getElementById('form-dados');
 form.addEventListener('submit', lidarComEnvioDeFormulario);
 
+const inputNome = document.getElementById('input-nome');
+const inputEmail = document.getElementById('input-email');
+const inputRenda = document.getElementById('input-renda');
 
+const adicionarInvestimentoBtn = document.getElementById('adicionar-investimento-btn');
+const investimentoModal = document.getElementById('investimento-modal');
+const cancelarInvestimentoBtn = document.getElementById('cancelar-investimento');
+const investimentoForm = document.getElementById('investimento-form');
 
+const inputInvestimentoNome = document.getElementById('investimento-nome');
+const inputInvestimentoRendimento = document.getElementById('investimento-rendimento');
+const radioRiscoSim = document.getElementById('risco-sim');
+const radioRiscoNao = document.getElementById('risco-nao');
+
+const formErrors = document.getElementById('form-errors'); 
+
+// Listeners da seção investimentos
+
+adicionarInvestimentoBtn.addEventListener('click', () => { 
+    investimentoModal.style.display = 'block';
+    if (formErrors) formErrors.textContent = ''; 
+});
+cancelarInvestimentoBtn.addEventListener('click', () => {
+    investimentoModal.style.display = 'none';
+    investimentoForm.reset();
+    if (formErrors) formErrors.textContent = '';
+});
+
+// Listener para o envio do formulário de investimento
+investimentoForm.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const nome = document.getElementById('investimento-nome').value.trim();
+    const rendimentoStr = document.getElementById('investimento-rendimento').value;
+    const riscoSelecionado = document.querySelector('input[name="risco"]:checked');
+    const risco = riscoSelecionado ? riscoSelecionado.value : '';
+    
+    if (!validarDadosInvestimento(nome, rendimentoStr, risco)) {
+        if (formErrors) {
+            formErrors.textContent = 'Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.';
+        } else {
+            alert('Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.');
+        }
+        return;
+    }
+    
+    adicionarInvestimento(nome, rendimentoStr, risco); 
+    renderizarTabelaInvestimentos();
+    
+    investimentoForm.reset();
+    investimentoModal.style.display = 'none';
+    if (formErrors) formErrors.textContent = '';
+});
 
 function salvarDadosUsuario(nome, email, renda) {
     nomeDigitado = nome || 'Anônimo';
@@ -65,42 +116,50 @@ class Investimento {
 
 // ###################### FUNÇÔES DE INVESTIMENTO ##################
 
-function preencherInvestimentosPrompt() {
-    console.log('Quantos investimentos vamos adicionar?');
-    const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
-    const numInvestimentos = parseInt(numInvestimentosStr) || 1;
-
-    for (let i = 0; i < numInvestimentos; i++) {
-        console.log(`--- Coletando dados para o ${i + 1}º investimento ---`);
-
-        const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
-        const rendimentoInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
-        const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
-
-        if (validarDadosInvestimento(nomeInput, rendimentoInput, riscoInput)) {
-            adicionarInvestimento(nomeInput, rendimentoInput, riscoInput);
-        } else {
-            console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
+function preencherInvestimentoForm() {
+    const modal = document.getElementById('investimento-modal');
+    const form = document.getElementById('investimento-form');
+    const mensagemErro = document.getElementById('form-errors');
+    
+    //Configura o CSS dinamicamente
+    modal.style.display = 'block';
+    mensagemErro.textContent = ''; 
+    
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        
+        const nome = document.getElementById('investimento-nome').value.trim();
+        const rendimentoStr = document.getElementById('investimento-rendimento').value;
+        const risco = document.querySelector('input[name="risco"]:checked')?.value;
+        
+        if (!validarDadosInvestimento(nome, rendimentoStr, risco)) {
+            mensagemErro.textContent = 'Verifique os dados: nome obrigatório, rendimento no formato exemplo 0,05 para 5% e selecione o risco.';
+            return;
         }
-    }
-
-    console.log('\n--- Preenchimento de investimentos concluído ---');
-    renderizarTabelaInvestimentos();
+        
+        adicionarInvestimento(nome, rendimentoStr, risco);
+        renderizarTabelaInvestimentos();
+        
+        form.reset();
+        modal.style.display = 'none';
+    };
+    
+    document.getElementById('cancelar-investimento').onclick = function() {
+        form.reset();
+        modal.style.display = 'none';
+    };
 }
 
 function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
-        alert('O nome do investimento não pode estar vazio.');
         return false;
     }
     const rendimentoNumerico = parseFloat(rendimentoStrInput.replace(',', '.'));
     if (isNaN(rendimentoNumerico) || rendimentoNumerico <= 0) {
-        alert('O rendimento esperado precisa ser um número positivo (Ex: 0.05 para 5%).');
         return false;
     }
     const riscoLower = riscoInput.trim().toLowerCase();
     if (riscoLower !== "sim" && riscoLower !== "nao") {
-        alert('A resposta para o risco precisa ser "sim" ou "nao".');
         return false;
     }
     return true;
@@ -207,11 +266,11 @@ function renderizarTabelaInvestimentos() {
 function carregarInvestimentosPadrao() {
     const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
     const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-    const parametroLCIBradesco = new Investimento("LCI Bradesco", 0,1211, "nao");
-    const parametroLCDBITAU = new Investimento("CDB Itau", 0,1133, "nao");
-    const parametroITAU = new Investimento("ITUB4", 0,5519, "nao");
+    const parametroLCIBradesco = new Investimento("LCI Bradesco", 0.1211, "nao"); 
+    const parametroLCDBITAU = new Investimento("CDB Itau", 0.1133, "nao"); 
+    const parametroITAU = new Investimento("ITUB4", 0.5519, "nao"); 
 
-    investimentosColetados.push(parametroPoupanca, parametroPetro);
+    investimentosColetados.push(parametroPoupanca, parametroPetro, parametroLCDBITAU, parametroLCIBradesco, parametroITAU);
 }
 
 function inicializarApp() {
