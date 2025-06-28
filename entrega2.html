@@ -9,8 +9,8 @@
 <body>
     <div>
         <h1>Simulador de Investimentos Personalizados</h1>
-        <p>Nosso simulador financeiro oferece uma análise inteligente para ajudar você a tomar decisões de investimento mais embasadas. O sistema compara os dados informados sobre seu investimento cadastrado com opções conhecidas pelo público comum que a nosso ver apresentem risco semelhante aos dados fornecidos na simulação.</p>      
-        <p>Este simulador de investimentos é uma ferramenta para <strong>projeção e análise</strong>, e não uma recomendação ou aconselhamento financeiro. Ele foi desenvolvido para auxiliar você a entender melhor as possíveis rentabilidades de seus investimentos com base no seu perfil e nos parâmetros de mercado predefinidos em nosso sistema.</p>
+        <p>Nosso simulador financeiro oferece uma análise inteligente para ajudar você a tomar decisões de investimento mais embasadas. O sistema compara os dados informados sobre seu investimento cadastrado com opções conhecidas pelo público comum que a nosso ver apresentem risco semelhante aos dados fornecidos na simulação.</p>       
+        <p>Este simulador de investimentos é uma ferramenta para **projeção e análise**, e não uma recomendação ou aconselhamento financeiro. Ele foi desenvolvido para auxiliar você a entender melhor as possíveis rentabilidades de seus investimentos com base no seu perfil e nos parâmetros de mercado predefinidos em nosso sistema.</p>
 
     </div>
 
@@ -56,13 +56,13 @@
                 </tr>
             </thead>
             <tbody id="investimentos-body">
-                <!-- Dados dinâmicos serão inseridos aqui via JavaScript -->
-            </tbody>
+                </tbody>
         </table>
 
         <div id="investimento-modal" class="modal" style="display:none;">
             <div class="modal-content">
                 <h2>Adicionar Investimento</h2>
+                <p id="form-errors"></p> 
                 
                 <form id="investimento-form">
                     <div class="form-group">
@@ -84,7 +84,7 @@
                             <input type="radio" id="risco-nao" name="risco" value="nao">
                             <label for="risco-nao">Não</label>
                         </div>
-                    </div>                
+                    </div>               
                     <div class="form-buttons">
                         <button type="submit" class="btn-confirmar">Adicionar</button>
                         <button type="button" id="cancelar-investimento" class="btn-cancelar">Cancelar</button>

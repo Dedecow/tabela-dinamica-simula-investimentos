@@ -12,8 +12,59 @@ const tbodyInvestimentos =document.getElementById('investimentos-body')
 const form = document.getElementById('form-dados');
 form.addEventListener('submit', lidarComEnvioDeFormulario);
 
+const inputNome = document.getElementById('input-nome');
+const inputEmail = document.getElementById('input-email');
+const inputRenda = document.getElementById('input-renda');
 
+const adicionarInvestimentoBtn = document.getElementById('adicionar-investimento-btn');
+const investimentoModal = document.getElementById('investimento-modal');
+const cancelarInvestimentoBtn = document.getElementById('cancelar-investimento');
+const investimentoForm = document.getElementById('investimento-form');
 
+const inputInvestimentoNome = document.getElementById('investimento-nome');
+const inputInvestimentoRendimento = document.getElementById('investimento-rendimento');
+const radioRiscoSim = document.getElementById('risco-sim');
+const radioRiscoNao = document.getElementById('risco-nao');
+
+const formErrors = document.getElementById('form-errors'); 
+
+// Listeners da seção investimentos
+
+adicionarInvestimentoBtn.addEventListener('click', () => { 
+    investimentoModal.style.display = 'block';
+    if (formErrors) formErrors.textContent = ''; 
+});
+cancelarInvestimentoBtn.addEventListener('click', () => {
+    investimentoModal.style.display = 'none';
+    investimentoForm.reset();
+    if (formErrors) formErrors.textContent = '';
+});
+
+// Listener para o envio do formulário de investimento
+investimentoForm.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const nome = document.getElementById('investimento-nome').value.trim();
+    const rendimentoStr = document.getElementById('investimento-rendimento').value;
+    const riscoSelecionado = document.querySelector('input[name="risco"]:checked');
+    const risco = riscoSelecionado ? riscoSelecionado.value : '';
+    
+    if (!validarDadosInvestimento(nome, rendimentoStr, risco)) {
+        if (formErrors) {
+            formErrors.textContent = 'Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.';
+        } else {
+            alert('Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.');
+        }
+        return;
+    }
+    
+    adicionarInvestimento(nome, rendimentoStr, risco); 
+    renderizarTabelaInvestimentos();
+    
+    investimentoForm.reset();
+    investimentoModal.style.display = 'none';
+    if (formErrors) formErrors.textContent = '';
+});
 
 function salvarDadosUsuario(nome, email, renda) {
     nomeDigitado = nome || 'Anônimo';
