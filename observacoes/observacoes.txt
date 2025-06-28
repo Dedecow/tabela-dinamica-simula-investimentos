@@ -40,7 +40,7 @@ Arquivo(s) JS referenciado(s) no HTML OK
 
 Formato
 
-Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” FALTA
+Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” ok
 
 Guarde os arquivos JS, CSS e JSON em subpastas ok
 
