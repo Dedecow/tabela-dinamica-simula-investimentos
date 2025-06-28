@@ -1,6 +1,53 @@
-1. refazer a validação de risco
-2 . Salvar dados do usuário no localstorage e devolver para tabela
-3. Transformar os dados do usuário em um objeto antes de salvar no localstorage
-4. salvar os objetos da array no localstorage
-5. Criar a tabela dinamicamente para acomodar os dados da arrays
-6. Perguntar ao professor qual o uso da classe
+Entrega 2
+Estrutura do simulador
+Objetivos gerais
+
+Mostrar seu simulador JS interagindo com HTML OK
+
+Integrar as ferramentas JS aprendidas até aqui OK
+
+Objetivos específicos
+
+Modifique sua estrutura anterior, integrando JS com JavaScript por meio do uso de DOM e Eventos. OK
+
+Programe o circuito de interação completo da lógica do seu aplicativo web, adicionando as novas ferramentas JS aprendidas OK
+
+Guarde seus objetos ou arrays de objetos no localstorage para manter disponíveis os dados adicionados pelo usuário, exemplo (os produtos em um carrinho de compras) OK
+
+Deve ser entregue
+
+Documento HTML + CSS (pelo menos um) OK
+
+Arquivo(s) JS referenciado(s) no HTML OK
+
+Formato
+
+Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” FALTA
+
+Guarde os arquivos JS, CSS e JSON em subpastas ok
+
+Sugestões
+
+Nesta etapa, você deve integrar JavaScript com HTML e/ou com CSS OK
+
+Termine de projetar a estética visual necessária na sua webapp com CSS e/ou um framework CSS OK
+
+Os algoritmos de JS devem ser invocados a partir do HTML, e interagir com o conteúdo web, criando HTML, lendo e processando dados inseridos de formulários, inputs, etc. FALTA
+
+Elimine toda interação com a Consola JS, convertendo essa interação no DOM do HTML - NAO ENTENDI
+
+Critérios de avaliação
+Funcionalidade
+Simula um ou mais fluxos de trabalho em termos de entrada, processo e saída. A funcionalidade é apropriada ao contexto do simulador. Não apresenta erros de cálculo durante o processamento. - OK
+
+Interatividade
+Captura entradas inseridas pelo usuário por meio de eventos. Realiza uma ou mais saídas por HTML modificando o DOM. Existe um controle de entrada de dados e as saídas são coerentes em relação aos dados inseridos.- OK
+
+Escalabilidade
+Declara funções com parâmetros para definir instruções com uma tarefa específica. Utiliza arrays para agrupar valores relacionados. Define objetos com propriedades e métodos relevantes ao contexto. Estabelece um critério homogêneo para a detecção de eventos. Armazena no storage dados relevantes gerados durante a simulação. - OK
+
+Integridade
+Define o código JavaScript em um arquivo .js, referenciando-o corretamente desde o HTML. Evita métodos prompt() e alert() para evitar interrupções durante o processamento e atualização do DOM. A informação estática do projeto é usada adequadamente. - FALTA
+
+Legibilidade
+Os nomes de variáveis, funções e objetos são significativos para o contexto. As instruções são escritas de forma legível e são usados comentários oportunos. O código fonte é organizado em termos de declaração e sequência. - OK
