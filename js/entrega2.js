@@ -226,4 +226,3 @@ function inicializarApp() {
     preencherInvestimentosPrompt();
 }
 
-inicializarApp();
