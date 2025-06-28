@@ -275,7 +275,7 @@ function carregarInvestimentosPadrao() {
         new Investimento("Petr4", 0.2707, "sim"),
         new Investimento("LCI Bradesco", 0.1211, "nao"),
         new Investimento("CDB Itau", 0.1133, "nao"),
-        new Investimento("ITUB4", 0.5519, "nao")
+        new Investimento("ITUB4", 0.5519, "sim")
     ];
     
     investimentosColetados.push(...investimentosPadrao);
