@@ -235,18 +235,28 @@ table th {
         flex-direction: column;
     }
 }
-.btn-adicionar, #carregar-padroes-btn {
-    background-color: var(--primary-blue);
-    color: var(--text-color-light);
-    padding: 10px 15px;
-    border: none;
-    border-radius: 3px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-right: 10px; /* Espaço entre os botões */
+
+botoes-investimento {
+display: flex; / Ou use inline-block se preferir /
+gap: 10px; / Espaçamento entre os botões (substitui margin-right) */
 }
 
-.btn-adicionar:hover, #carregar-padroes-btn:hover {
+.btn-adicionar,
+#carregar-padroes-btn,
+#limpar-investimentos-btn {
+background-color: var(--primary-blue);
+color: var(--text-color-light);
+padding: 10px 15px;
+border: none;
+border-radius: 3px;
+font-size: 1em;
+cursor: pointer;
+transition: background-color 0.2s ease;
+margin-right: 0; / Remova o margin-right daqui, pois o espaçamento será controlado pelo gap
+}
+
+.btn-adicionar:hover, 
+#carregar-padroes-btn:hover,
+#limpar-investimentos-btn:hover { 
     background-color: #0056b3;
 }

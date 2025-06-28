@@ -14,6 +14,8 @@ const inputRenda = document.getElementById('input-renda');
 
 const adicionarInvestimentoBtn = document.getElementById('adicionar-investimento-btn');
 const carregarPadroesBtn = document.getElementById('carregar-padroes-btn');
+const limparInvestimentosBtn = document.getElementById('limpar-investimentos-btn'); 
+
 const investimentoModal = document.getElementById('investimento-modal');
 const cancelarInvestimentoBtn = document.getElementById('cancelar-investimento');
 const investimentoForm = document.getElementById('investimento-form');
@@ -36,6 +38,9 @@ carregarPadroesBtn.addEventListener('click', () => {
         carregarInvestimentosPadrao();
     }
 });
+if (limparInvestimentosBtn) {
+    limparInvestimentosBtn.addEventListener('click', limparInvestimentos);
+}
 cancelarInvestimentoBtn.addEventListener('click', () => {
     investimentoModal.style.display = 'none';
     investimentoForm.reset();
@@ -282,6 +287,14 @@ function carregarInvestimentosPadrao() {
     renderizarTabelaInvestimentos();
     
     console.log('Investimentos padrão carregados:', investimentosPadrao);
+}
+function limparInvestimentos() {
+    if (confirm('Tem certeza que deseja remover TODOS os seus investimentos? Esta ação não pode ser desfeita.')) {
+        investimentosColetados.length = 0;
+        localStorage.removeItem('meusInvestimentos');
+        renderizarTabelaInvestimentos();
+        console.log('Todos os investimentos foram removidos.');
+    }
 }
 
 function tentarCarregarDadosPersistidos() {
