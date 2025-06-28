@@ -188,9 +188,7 @@ function salvarInvestimentosNoLocalStorage() {
     console.log('Investimentos salvos no localStorage com sucesso!');
 }
 
-function preencherArrayComDadosLocalStorage(dados) {
-    investimentosColetados.length = 0;
-    
+function preencherArrayComDadosLocalStorage(dados) {    
     dados.forEach(dado => {
         investimentosColetados.push(
             new Investimento(dado.nome, dado.rendimento, dado.risco)
@@ -268,7 +266,6 @@ function renderizarTabelaInvestimentos() {
 }
 
 function carregarInvestimentosPadrao() {
-    investimentosColetados.length = 0;
     
     const investimentosPadrao = [
         new Investimento("Poupança", 0.0500, "nao"),
@@ -302,3 +299,4 @@ function inicializarApp() {
     garantirInvestimentosIniciais();
     renderizarTabelaInvestimentos();
 }
+inicializarApp()
