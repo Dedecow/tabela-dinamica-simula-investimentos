@@ -9,6 +9,38 @@ const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
 const tbodyInvestimentos =document.getElementById('investimentos-body')
 
+const form = document.getElementById('form-dados');
+form.addEventListener('submit', lidarComEnvioDeFormulario);
+
+
+
+
+function salvarDadosUsuario(nome, email, renda) {
+    nomeDigitado = nome || 'Anônimo';
+    emailDigitado = email || 'email@email.com';
+    rendaDigitada = renda || '0';
+
+    if (tbName) tbName.textContent = nomeDigitado;
+    if (tbEmail) tbEmail.textContent = emailDigitado;
+    if (tbRenda) tbRenda.textContent = rendaDigitada;
+
+    console.log('Dados do usuário registrados:', {
+        nome: nomeDigitado,
+        email: emailDigitado,
+        renda: rendaDigitada
+    });
+}
+
+function lidarComEnvioDeFormulario(event) {
+    event.preventDefault(); 
+
+    const nome = document.getElementById('input-nome').value.trim();
+    const email = document.getElementById('input-email').value.trim();
+    const renda = document.getElementById('input-renda').value.trim();
+
+    salvarDadosUsuario(nome, email, renda);
+}
+
 class Investimento {
     constructor(nomeImput, rendimentoImput, riscoImput) {
         this.nome = nomeImput.trim();
@@ -29,42 +61,6 @@ class Investimento {
             </td>
         `;
     }
-}
-
-function salvarNomeTabela() {
-    nomeDigitado = prompt('Digite seu nome.') || 'Anônimo';
-    if (tbName) {
-        tbName.textContent = nomeDigitado;
-    }
-    console.log(`Nome registrado para simulação de investimentos foi ${nomeDigitado}`);
-}
-
-function salvarEmailTabela() {
-    emailDigitado = prompt('Digite seu email.') || 'email@email.com';
-    if (tbEmail) {
-        tbEmail.textContent = emailDigitado;
-    }
-    console.log(`Email registrado para simulação de investimentos foi ${emailDigitado}`);
-}
-
-function salvarRendaTabela() {
-    rendaDigitada = prompt('Digite sua renda.');
-    if (tbRenda) {
-        tbRenda.textContent = rendaDigitada;
-    }
-    console.log(`Renda registrada para simulação de investimentos foi ${rendaDigitada}`);
-}
-
-function dadosDigitados() {
-    const mensagem = `
-    DADOS PARA SIMULAÇÃO:
-    -------------------------------
-    NOME: ${nomeDigitado}
-    EMAIL: ${emailDigitado}
-    RENDA: ${rendaDigitada}
-    `;
-    alert(mensagem);
-    console.log('Dados globais:', { nomeDigitado, emailDigitado, rendaDigitada });
 }
 
 // ###################### FUNÇÔES DE INVESTIMENTO ##################
@@ -227,12 +223,6 @@ function inicializarApp() {
     }
 
     renderizarTabelaInvestimentos();
-
-    salvarNomeTabela();
-    salvarEmailTabela();
-    salvarRendaTabela();
-    dadosDigitados();
     preencherInvestimentosPrompt();
 }
 
-inicializarApp();
