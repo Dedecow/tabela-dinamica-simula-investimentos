@@ -1,9 +1,5 @@
 const investimentosColetados = [];
 
-let nomeDigitado = '';
-let emailDigitado = '';
-let rendaDigitada = '';
-
 const tbName = document.getElementById('tb-name');
 const tbEmail = document.getElementById('tb-email');
 const tbRenda = document.getElementById('tb-renda');
@@ -17,6 +13,7 @@ const inputEmail = document.getElementById('input-email');
 const inputRenda = document.getElementById('input-renda');
 
 const adicionarInvestimentoBtn = document.getElementById('adicionar-investimento-btn');
+const carregarPadroesBtn = document.getElementById('carregar-padroes-btn');
 const investimentoModal = document.getElementById('investimento-modal');
 const cancelarInvestimentoBtn = document.getElementById('cancelar-investimento');
 const investimentoForm = document.getElementById('investimento-form');
@@ -33,6 +30,11 @@ const formErrors = document.getElementById('form-errors');
 adicionarInvestimentoBtn.addEventListener('click', () => { 
     investimentoModal.style.display = 'block';
     if (formErrors) formErrors.textContent = ''; 
+});
+carregarPadroesBtn.addEventListener('click', () => {
+    if (confirm('Isso substituirá seus investimentos atuais pelos padrões. Deseja continuar?')) {
+        carregarInvestimentosPadrao();
+    }
 });
 cancelarInvestimentoBtn.addEventListener('click', () => {
     investimentoModal.style.display = 'none';
@@ -67,6 +69,10 @@ investimentoForm.addEventListener('submit', (event) => {
 });
 
 function salvarDadosUsuario(nome, email, renda) {
+    let nomeDigitado = '';
+    let emailDigitado = '';
+    let rendaDigitada = '';
+
     nomeDigitado = nome || 'Anônimo';
     emailDigitado = email || 'email@email.com';
     rendaDigitada = renda || '0';
@@ -116,7 +122,7 @@ class Investimento {
 
 // ###################### FUNÇÔES DE INVESTIMENTO ##################
 
-function preencherInvestimentoForm() {
+/*function preencherInvestimentoForm() {
     const modal = document.getElementById('investimento-modal');
     const form = document.getElementById('investimento-form');
     const mensagemErro = document.getElementById('form-errors');
@@ -149,7 +155,7 @@ function preencherInvestimentoForm() {
         modal.style.display = 'none';
     };
 }
-
+*/
 function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
         return false;
@@ -264,24 +270,37 @@ function renderizarTabelaInvestimentos() {
 }
 
 function carregarInvestimentosPadrao() {
-    const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
-    const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
-    const parametroLCIBradesco = new Investimento("LCI Bradesco", 0.1211, "nao"); 
-    const parametroLCDBITAU = new Investimento("CDB Itau", 0.1133, "nao"); 
-    const parametroITAU = new Investimento("ITUB4", 0.5519, "nao"); 
-
-    investimentosColetados.push(parametroPoupanca, parametroPetro, parametroLCDBITAU, parametroLCIBradesco, parametroITAU);
+    investimentosColetados.length = 0;
+    
+    const investimentosPadrao = [
+        new Investimento("Poupança", 0.0500, "nao"),
+        new Investimento("Petr4", 0.2707, "sim"),
+        new Investimento("LCI Bradesco", 0.1211, "nao"),
+        new Investimento("CDB Itau", 0.1133, "nao"),
+        new Investimento("ITUB4", 0.5519, "nao")
+    ];
+    
+    investimentosColetados.push(...investimentosPadrao);
+    
+    salvarInvestimentosNoLocalStorage();
+    
+    renderizarTabelaInvestimentos();
+    
+    console.log('Investimentos padrão carregados:', investimentosPadrao);
 }
 
-function inicializarApp() {
-
+function tentarCarregarDadosPersistidos() {
     carregarInvestimentosDoLocalStorage();
+}
 
+function garantirInvestimentosIniciais() {
     if (investimentosColetados.length === 0) {
         carregarInvestimentosPadrao();
     }
-
-    renderizarTabelaInvestimentos();
-    preencherInvestimentosPrompt();
 }
 
+function inicializarApp() {
+    tentarCarregarDadosPersistidos();
+    garantirInvestimentosIniciais();
+    renderizarTabelaInvestimentos();
+}

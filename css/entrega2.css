@@ -235,3 +235,18 @@ table th {
         flex-direction: column;
     }
 }
+.btn-adicionar, #carregar-padroes-btn {
+    background-color: var(--primary-blue);
+    color: var(--text-color-light);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 10px; /* Espaço entre os botões */
+}
+
+.btn-adicionar:hover, #carregar-padroes-btn:hover {
+    background-color: #0056b3;
+}
