@@ -54,9 +54,7 @@ investimentoForm.addEventListener('submit', (event) => {
     if (!validarDadosInvestimento(nome, rendimentoStr, risco)) {
         if (formErrors) {
             formErrors.textContent = 'Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.';
-        } else {
-            alert('Verifique os dados: nome obrigatório, rendimento no formato exemplo 0.05 para 5% e selecione o risco.');
-        }
+        } 
         return;
     }
     
