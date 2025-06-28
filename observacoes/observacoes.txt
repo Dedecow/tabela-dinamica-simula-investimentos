@@ -1,8 +1,8 @@
-REFATORANDO PARA EXCLUIR PROMPTS E ALERTS:
+REFATORANDO PARA EXCLUIR PROMPTS E A#LERTS:
 
 Passo1: DADOS DO USUARIO:
 
-1. Substituir os prompt() e alert() por inputs HTML e botões.
+1. Substituir os prompt() e a#lert() por inputs HTML e botões.
 
 2. Coletar os dados do usuário ao clicar em um botão.
 
@@ -65,7 +65,7 @@ Escalabilidade
 Declara funções com parâmetros para definir instruções com uma tarefa específica. Utiliza arrays para agrupar valores relacionados. Define objetos com propriedades e métodos relevantes ao contexto. Estabelece um critério homogêneo para a detecção de eventos. Armazena no storage dados relevantes gerados durante a simulação. - OK
 
 Integridade
-Define o código JavaScript em um arquivo .js, referenciando-o corretamente desde o HTML. Evita métodos prompt() e alert() para evitar interrupções durante o processamento e atualização do DOM. A informação estática do projeto é usada adequadamente. - OK
+Define o código JavaScript em um arquivo .js, referenciando-o corretamente desde o HTML. Evita métodos prompt() e a#lert() para evitar interrupções durante o processamento e atualização do DOM. A informação estática do projeto é usada adequadamente. - OK
 
 Legibilidade
 Os nomes de variáveis, funções e objetos são significativos para o contexto. As instruções são escritas de forma legível e são usados comentários oportunos. O código fonte é organizado em termos de declaração e sequência. - OK
