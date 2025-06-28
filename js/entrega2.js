@@ -65,27 +65,40 @@ class Investimento {
 
 // ###################### FUNÇÔES DE INVESTIMENTO ##################
 
-function preencherInvestimentosPrompt() {
-    console.log('Quantos investimentos vamos adicionar?');
-    const numInvestimentosStr = prompt('Quantos investimentos vamos adicionar?');
-    const numInvestimentos = parseInt(numInvestimentosStr) || 1;
-
-    for (let i = 0; i < numInvestimentos; i++) {
-        console.log(`--- Coletando dados para o ${i + 1}º investimento ---`);
-
-        const nomeInput = prompt(`Digite o nome do ${i + 1}º investimento:`);
-        const rendimentoInput = prompt(`Digite o rendimento esperado (ex: 0.05 para 5%):`);
-        const riscoInput = prompt(`No ${i + 1}º investimento você pode tirar menos dinheiro do que colocou? Digite "sim" ou "não":`);
-
+function preencherInvestimentoForm() {
+    console.log('Iniciando adição de investimento via formulário');
+    
+    const modal = document.getElementById('investimento-modal');
+    const form = document.getElementById('investimento-form');
+    
+    // Configura o CSS dinamicamente
+    modal.style.display = 'block';
+    
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        
+        const nomeInput = document.getElementById('investimento-nome').value;
+        const rendimentoInput = document.getElementById('investimento-rendimento').value;
+        const riscoInput = document.querySelector('input[name="risco"]:checked')?.value;
+        
         if (validarDadosInvestimento(nomeInput, rendimentoInput, riscoInput)) {
             adicionarInvestimento(nomeInput, rendimentoInput, riscoInput);
+            renderizarTabelaInvestimentos();
+            
+            form.reset();
+            modal.style.display = 'none';
+            
+            console.log('\n--- Investimento adicionado com sucesso ---');
         } else {
-            console.log(`Dados inválidos para o ${i + 1}º investimento. Não foi adicionado.`);
+            console.log('Dados inválidos. Investimento não adicionado.');
         }
-    }
-
-    console.log('\n--- Preenchimento de investimentos concluído ---');
-    renderizarTabelaInvestimentos();
+    };
+    
+    document.getElementById('cancelar-investimento').onclick = function() {
+        form.reset();
+        modal.style.display = 'none';
+        console.log('Adição de investimento cancelada');
+    };
 }
 
 function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
