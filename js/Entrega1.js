@@ -95,6 +95,16 @@ function salvarInvestimentosNoLocalStorage() {
     console.log('Investimentos salvos no localStorage com sucesso!');
 }
 
+function limparInvestimentos() {
+    if (!confirm("Tem certeza de que deseja remover todos os investimentos?")) return;
+
+    investimentosColetados.length = 0;
+    localStorage.removeItem('meusInvestimentos');
+    renderizarTabelaInvestimentos();
+
+    console.log("Todos os investimentos foram removidos.");
+}
+
 function verificarArrayPreenchida() {
     if (investimentosColetados.length > 0) {
         console.log('Array já contém dados - não carregará do localStorage.');
