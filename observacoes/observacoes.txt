@@ -1,3 +1,21 @@
+REFATORANDO PARA EXCLUIR PROMPTS E ALERTS:
+
+Passo1: DADOS DO USUARIO:
+
+1. Substituir os prompt() e alert() por inputs HTML e botões.
+
+2. Coletar os dados do usuário ao clicar em um botão.
+
+3. Preencher a tabela (tb-name, tb-email, tb-renda) com os dados digitados.
+
+4. Refatorar o código JS para uma função única que trate todos os dados de forma organizada.
+
+5. Tornar a interface mais clara e fluida.
+
+
+
+
+
 Entrega 2
 Estrutura do simulador
 Objetivos gerais
