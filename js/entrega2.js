@@ -211,6 +211,10 @@ function renderizarTabelaInvestimentos() {
 function carregarInvestimentosPadrao() {
     const parametroPoupanca = new Investimento("Poupança", 0.0500, "nao");
     const parametroPetro = new Investimento("Petr4", 0.2707, "sim");
+    const parametroLCIBradesco = new Investimento("LCI Bradesco", 0,1211, "nao");
+    const parametroLCDBITAU = new Investimento("CDB Itau", 0,1133, "nao");
+    const parametroITAU = new Investimento("ITUB4", 0,5519, "nao");
+
     investimentosColetados.push(parametroPoupanca, parametroPetro);
 }
 
