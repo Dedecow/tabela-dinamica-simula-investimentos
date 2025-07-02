@@ -33,11 +33,13 @@ adicionarInvestimentoBtn.addEventListener('click', () => {
     investimentoModal.style.display = 'block';
     if (formErrors) formErrors.textContent = ''; 
 });
+
 carregarPadroesBtn.addEventListener('click', () => {
     if (confirm('Isso substituirá seus investimentos atuais pelos padrões. Deseja continuar?')) {
         carregarInvestimentosPadrao();
     }
 });
+
 if (limparInvestimentosBtn) {
     limparInvestimentosBtn.addEventListener('click', limparInvestimentos);
 }
@@ -159,12 +161,13 @@ class Investimento {
     };
 }
 */
+
 function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
     if (!nomeInput || nomeInput.trim() === '') {
         return false;
     }
     const rendimentoNumerico = parseFloat(rendimentoStrInput.replace(',', '.'));
-    if (isNaN(rendimentoNumerico) || rendimentoNumerico <= 0) {
+    if (isNaN(rendimentoNumerico) || rendimentoNumerico <= 0 || rendimentoNumerico > 1,5) {
         return false;
     }
     const riscoLower = riscoInput.trim().toLowerCase();
