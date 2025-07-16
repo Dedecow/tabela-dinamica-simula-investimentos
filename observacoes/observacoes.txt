@@ -67,15 +67,14 @@ Legibilidade: Nomes de variáveis, funções e objetos são significativos; o c�
 
 obs
 
-Objetivos Específicos:
+1 tentar a integração do SweetAlert2 na função limparInvestimentos()
 
-Uso das ferramentas mais importantes de JS, e bibliotecas externas: Ferramentas importantes do JS são utilizadas, mas não há uso de bibliotecas JavaScript externas no projeto.
+2 remover 
+console.log('Todos os investimentos foram removidos.');
+console.log('Remoção de investimentos cancelada.');
 
-Sugestões:
 
-Substituir alert, prompt, confirm por uma biblioteca JS: alert() e prompt() foram substituídos por modais e mensagens no DOM. No entanto, a função 
 
-limparInvestimentos() ainda utiliza confirm(), e a substituição solicitada por uma biblioteca JS não foi implementada para essa funcionalidade. 
 
 Critérios de Avaliação:
 
