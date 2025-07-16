@@ -19,6 +19,12 @@ addEventListener para carregarPadroesBtn --> chama carregarInvestimentosDoJson()
 
 Elimine console.log e derivados: O código ainda utiliza console.log para depuração.
 
+Criar as funções exibirErroFormulario(mensagem) e limparErroFormulario()
+
+Atualizar as funções lidarComEnvioDeFormulario e lidarComEnvioDeInvestimento para substituir todas as ocorrências de formErrors.textContent = ... e formErrors.textContent = ''
+
+
+
 Link para repositório do Github (preferencial).
 
 Nome do arquivo “ProjetoFinal+Sobrenome”.
