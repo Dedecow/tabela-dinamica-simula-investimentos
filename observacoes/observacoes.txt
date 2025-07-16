@@ -1,4 +1,23 @@
-Projeto Final: Simulador interativo em JavaScript
+REFATORANDO PARA EXCLUIR PROMPTS E A#LERTS:
+
+Passo1: DADOS DO USUARIO:
+
+1. Substituir os prompt() e a#lert() por inputs HTML e botões.
+
+2. Coletar os dados do usuário ao clicar em um botão.
+
+3. Preencher a tabela (tb-name, tb-email, tb-renda) com os dados digitados.
+
+4. Refatorar o código JS para uma função única que trate todos os dados de forma organizada.
+
+5. Tornar a interface mais clara e fluida.
+
+
+
+
+
+Entrega 2
+Estrutura do simulador
 Objetivos gerais
 
 Criar um simulador interativo
@@ -7,26 +26,11 @@ Pode ser um E-commerce, Cotador de produtos/serviços, Simulador de Home banking
 
 Objetivos específicos
 
-Utilizar dados remotos (ou simular com JSON)
+Modifique sua estrutura anterior, integrando JS com JavaScript por meio do uso de DOM e Eventos. OK
 
-HTML interativo (gerado a partir do JS)
+Programe o circuito de interação completo da lógica do seu aplicativo web, adicionando as novas ferramentas JS aprendidas OK
 
-Uso das ferramentas mais importantes de JS, e bibliotecas externas
-
-Deve ser 100% funcional e com a lógica de negócios do seu projeto escolhido (Exemplo: se cria um E-commerce, simula o processo completo de compra)
-
-
-
-Sugestões
-
-Elimine console.log e derivados
-
-Substitua alert, prompt, confirm por uma biblioteca JS
-
-Se incluir formulários para completar,
-pré-carregue dados nos campos
-
-
+Guarde seus objetos ou arrays de objetos no localstorage para manter disponíveis os dados adicionados pelo usuário, exemplo (os produtos em um carrinho de compras) OK
 
 Deve ser entregue
 
@@ -34,14 +38,19 @@ Projeto HTML + CSS + JS funcional
 
 Formato
 
-Arquivo em formato .ZIP (NÃO em formato RAR)
+Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” ok
 
-Link para subpasta do GDrive
+Guarde os arquivos JS, CSS e JSON em subpastas ok
 
-Link para repositório do Github (preferencial)
+Sugestões
 
-deve ter o nome “ProjetoFinal+Sobrenome”
+Nesta etapa, você deve integrar JavaScript com HTML e/ou com CSS OK
 
+Termine de projetar a estética visual necessária na sua webapp com CSS e/ou um framework CSS OK
+
+Os algoritmos de JS devem ser invocados a partir do HTML, e interagir com o conteúdo web, criando HTML, lendo e processando dados inseridos de formulários, inputs, etc. FALTA
+
+Elimine toda interação com a Consola JS, convertendo essa interação no DOM do HTML - NAO ENTENDI
 
 Critérios de avaliação
 Funcionalidade
