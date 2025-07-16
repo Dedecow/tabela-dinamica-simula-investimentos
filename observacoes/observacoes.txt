@@ -58,7 +58,9 @@ Escalabilidade: Declara funções com parâmetros, define objetos (Investimento)
 
 Legibilidade: Nomes de variáveis, funções e objetos são significativos; o código é legível, organizado e possui comentários oportunos. 
 
-⚠️ Itens Parcialmente Atendidos
+
+obs
+
 Objetivos Específicos:
 
 Uso das ferramentas mais importantes de JS, e bibliotecas externas: Ferramentas importantes do JS são utilizadas, mas não há uso de bibliotecas JavaScript externas no projeto.
