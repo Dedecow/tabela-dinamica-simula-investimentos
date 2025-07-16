@@ -1,0 +1,27 @@
+[
+  {
+    "nome": "Poupança",
+    "rendimento": 0.0500,
+    "risco": "nao"
+  },
+  {
+    "nome": "Petr4",
+    "rendimento": 0.2707,
+    "risco": "sim"
+  },
+  {
+    "nome": "LCI Bradesco",
+    "rendimento": 0.1211,
+    "risco": "nao"
+  },
+  {
+    "nome": "CDB Itau",
+    "rendimento": 0.1133,
+    "risco": "nao"
+  },
+  {
+    "nome": "ITUB4",
+    "rendimento": 0.5519,
+    "risco": "sim"
+  }
+]
