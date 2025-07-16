@@ -167,7 +167,7 @@ function validarDadosInvestimento(nomeInput, rendimentoStrInput, riscoInput) {
         return false;
     }
     const rendimentoNumerico = parseFloat(rendimentoStrInput.replace(',', '.'));
-    if (isNaN(rendimentoNumerico) || rendimentoNumerico <= 0 || rendimentoNumerico > 1,5) {
+    if (isNaN(rendimentoNumerico) || rendimentoNumerico <= 0 || rendimentoNumerico > 1) {
         return false;
     }
     const riscoLower = riscoInput.trim().toLowerCase();
