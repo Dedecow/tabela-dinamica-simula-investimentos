@@ -1,71 +1,60 @@
-REFATORANDO PARA EXCLUIR PROMPTS E A#LERTS:
-
-Passo1: DADOS DO USUARIO:
-
-1. Substituir os prompt() e a#lert() por inputs HTML e botões.
-
-2. Coletar os dados do usuário ao clicar em um botão.
-
-3. Preencher a tabela (tb-name, tb-email, tb-renda) com os dados digitados.
-
-4. Refatorar o código JS para uma função única que trate todos os dados de forma organizada.
-
-5. Tornar a interface mais clara e fluida.
-
-
-
-
-
-Entrega 2
-Estrutura do simulador
+Projeto Final: Simulador interativo em JavaScript
 Objetivos gerais
 
-Mostrar seu simulador JS interagindo com HTML OK
+Criar um simulador interativo
 
-Integrar as ferramentas JS aprendidas até aqui OK
+Pode ser um E-commerce, Cotador de produtos/serviços, Simulador de Home banking com transações, Conversor de moedas/criptomoedas, entre outros.
 
 Objetivos específicos
 
-Modifique sua estrutura anterior, integrando JS com JavaScript por meio do uso de DOM e Eventos. OK
+Utilizar dados remotos (ou simular com JSON)
 
-Programe o circuito de interação completo da lógica do seu aplicativo web, adicionando as novas ferramentas JS aprendidas OK
+HTML interativo (gerado a partir do JS)
 
-Guarde seus objetos ou arrays de objetos no localstorage para manter disponíveis os dados adicionados pelo usuário, exemplo (os produtos em um carrinho de compras) OK
+Uso das ferramentas mais importantes de JS, e bibliotecas externas
 
-Deve ser entregue
+Deve ser 100% funcional e com a lógica de negócios do seu projeto escolhido (Exemplo: se cria um E-commerce, simula o processo completo de compra)
 
-Documento HTML + CSS (pelo menos um) OK
 
-Arquivo(s) JS referenciado(s) no HTML OK
-
-Formato
-
-Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” ok
-
-Guarde os arquivos JS, CSS e JSON em subpastas ok
 
 Sugestões
 
-Nesta etapa, você deve integrar JavaScript com HTML e/ou com CSS OK
+Elimine console.log e derivados
 
-Termine de projetar a estética visual necessária na sua webapp com CSS e/ou um framework CSS OK
+Substitua alert, prompt, confirm por uma biblioteca JS
 
-Os algoritmos de JS devem ser invocados a partir do HTML, e interagir com o conteúdo web, criando HTML, lendo e processando dados inseridos de formulários, inputs, etc. FALTA
+Se incluir formulários para completar,
+pré-carregue dados nos campos
 
-Elimine toda interação com a Consola JS, convertendo essa interação no DOM do HTML - NAO ENTENDI
+
+
+Deve ser entregue
+
+Projeto HTML + CSS + JS funcional
+
+Formato
+
+Arquivo em formato .ZIP (NÃO em formato RAR)
+
+Link para subpasta do GDrive
+
+Link para repositório do Github (preferencial)
+
+deve ter o nome “ProjetoFinal+Sobrenome”
+
 
 Critérios de avaliação
 Funcionalidade
-Simula um ou mais fluxos de trabalho em termos de entrada, processo e saída. A funcionalidade é apropriada ao contexto do simulador. Não apresenta erros de cálculo durante o processamento. - OK
+Simula um ou mais fluxos de trabalho em termos de entrada-processamento-saída e não são observados erros de cômputo.
 
 Interatividade
-Captura entradas inseridas pelo usuário por meio de eventos. Realiza uma ou mais saídas por HTML modificando o DOM. Existe um controle de entrada de dados e as saídas são coerentes em relação aos dados inseridos.- OK
+Captura entradas usando inputs e eventos adequados. As saídas são coerentes em relação aos dados inseridos e são visualizadas no HTML de forma assíncrona.
 
 Escalabilidade
-Declara funções com parâmetros para definir instruções com uma tarefa específica. Utiliza arrays para agrupar valores relacionados. Define objetos com propriedades e métodos relevantes ao contexto. Estabelece um critério homogêneo para a detecção de eventos. Armazena no storage dados relevantes gerados durante a simulação. - OK
+Declara funções com parâmetros para definir instruções com uma tarefa específica. Define objetos com propriedades e métodos relevantes ao contexto. Utiliza arrays para agrupar valores e objetos de forma dinâmica. O percurso das coleções é ótimo.
 
 Integridade
-Define o código JavaScript em um arquivo .js, referenciando-o corretamente desde o HTML. Evita métodos prompt() e a#lert() para evitar interrupções durante o processamento e atualização do DOM. A informação estática do projeto é usada adequadamente. - OK
+Define o código JavaScript em um arquivo .js, referenciando-o corretamente a partir do HTML. A informação estática em formato JSON é utilizada adequadamente, sendo carregada de forma assíncrona.
 
 Legibilidade
-Os nomes de variáveis, funções e objetos são significativos para o contexto. As instruções são escritas de forma legível e são usados comentários oportunos. O código fonte é organizado em termos de declaração e sequência. - OK
+Os nomes de variáveis, funções e objetos são significativos para o contexto, as instruções são escritas de forma legível e são usados comentários oportunos. O código fonte é organizado em termos de declaração e sequência.
