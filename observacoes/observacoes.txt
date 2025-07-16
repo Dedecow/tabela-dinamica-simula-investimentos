@@ -1,69 +1,65 @@
-REFATORANDO PARA EXCLUIR PROMPTS E A#LERTS:
 
-Passo1: DADOS DO USUARIO:
+PROXIMOS PASSOS::
 
-1. Substituir os prompt() e a#lert() por inputs HTML e botões.
+Utilizar dados remotos (ou simular com JSON): Atualmente, os investimentos sugeridos (investimentosPadrao) são definidos como um array diretamente no arquivo entrega2.js. Para atender a este critério, eles deveriam ser carregados de uma fonte remota (via fetch ou similar) ou de um arquivo JSON externo.
 
-2. Coletar os dados do usuário ao clicar em um botão.
+Elimine console.log e derivados: O código ainda utiliza console.log para depuração.
 
-3. Preencher a tabela (tb-name, tb-email, tb-renda) com os dados digitados.
+Link para repositório do Github (preferencial).
 
-4. Refatorar o código JS para uma função única que trate todos os dados de forma organizada.
-
-5. Tornar a interface mais clara e fluida.
+Nome do arquivo “ProjetoFinal+Sobrenome”.
 
 
 
 
 
-Entrega 2
-Estrutura do simulador
-Objetivos gerais
+ITENS OK:
 
-Criar um simulador interativo
 
-Pode ser um E-commerce, Cotador de produtos/serviços, Simulador de Home banking com transações, Conversor de moedas/criptomoedas, entre outros.
+Criar um simulador interativo.
 
-Objetivos específicos
+O tipo de simulador (financeiro/investimentos) está alinhado com as opções sugeridas (E-commerce, Cotador, Home Banking, etc.).
 
-Modifique sua estrutura anterior, integrando JS com JavaScript por meio do uso de DOM e Eventos. OK
+Objetivos Específicos:
 
-Programe o circuito de interação completo da lógica do seu aplicativo web, adicionando as novas ferramentas JS aprendidas OK
+HTML interativo (gerado a partir do JS), com manipulação dinâmica do DOM.
 
-Guarde seus objetos ou arrays de objetos no localstorage para manter disponíveis os dados adicionados pelo usuário, exemplo (os produtos em um carrinho de compras) OK
+Funcionalidade 100% e com a lógica de negócios básica do projeto escolhido (simula o processo de adicionar e listar investimentos).
 
-Deve ser entregue
+Deve Ser Entregue:
 
-Projeto HTML + CSS + JS funcional
+Projeto HTML + CSS + JS funcional.
 
-Formato
+Critérios de Avaliação:
 
-Arquivo em formato .ZIP com a pasta e os arquivos do projeto. Deve conter o nome “Entregável2+Sobrenome” ok
 
-Guarde os arquivos JS, CSS e JSON em subpastas ok
+Funcionalidade: Simula o fluxo de trabalho de entrada-processamento-saída, e não há erros de cômputo observáveis com a lógica fornecida. 
 
-Sugestões
 
-Nesta etapa, você deve integrar JavaScript com HTML e/ou com CSS OK
+Interatividade: Captura entradas usando inputs e eventos adequados, com saídas coerentes visualizadas dinamicamente no HTML. 
 
-Termine de projetar a estética visual necessária na sua webapp com CSS e/ou um framework CSS OK
 
-Os algoritmos de JS devem ser invocados a partir do HTML, e interagir com o conteúdo web, criando HTML, lendo e processando dados inseridos de formulários, inputs, etc. FALTA
+Escalabilidade: Declara funções com parâmetros, define objetos (Investimento) com propriedades e métodos, e utiliza arrays para agrupar dados de forma dinâmica e eficiente. 
 
-Elimine toda interação com a Consola JS, convertendo essa interação no DOM do HTML - NAO ENTENDI
 
-Critérios de avaliação
-Funcionalidade
-Simula um ou mais fluxos de trabalho em termos de entrada-processamento-saída e não são observados erros de cômputo.
+Legibilidade: Nomes de variáveis, funções e objetos são significativos; o código é legível, organizado e possui comentários oportunos. 
 
-Interatividade
-Captura entradas usando inputs e eventos adequados. As saídas são coerentes em relação aos dados inseridos e são visualizadas no HTML de forma assíncrona.
+⚠️ Itens Parcialmente Atendidos
+Objetivos Específicos:
 
-Escalabilidade
-Declara funções com parâmetros para definir instruções com uma tarefa específica. Define objetos com propriedades e métodos relevantes ao contexto. Utiliza arrays para agrupar valores e objetos de forma dinâmica. O percurso das coleções é ótimo.
+Uso das ferramentas mais importantes de JS, e bibliotecas externas: Ferramentas importantes do JS são utilizadas, mas não há uso de bibliotecas JavaScript externas no projeto.
 
-Integridade
-Define o código JavaScript em um arquivo .js, referenciando-o corretamente a partir do HTML. A informação estática em formato JSON é utilizada adequadamente, sendo carregada de forma assíncrona.
+Sugestões:
 
-Legibilidade
-Os nomes de variáveis, funções e objetos são significativos para o contexto, as instruções são escritas de forma legível e são usados comentários oportunos. O código fonte é organizado em termos de declaração e sequência.
+Substituir alert, prompt, confirm por uma biblioteca JS: alert() e prompt() foram substituídos por modais e mensagens no DOM. No entanto, a função 
+
+limparInvestimentos() ainda utiliza confirm(), e a substituição solicitada por uma biblioteca JS não foi implementada para essa funcionalidade. 
+
+Critérios de Avaliação:
+
+
+Integridade: O JavaScript está em um arquivo .js separado e bem referenciado.  O uso de JSON (
+
+JSON.stringify, JSON.parse) para persistência no localStorage está adequado. Contudo, não há carregamento assíncrono de 
+
+informação estática em formato JSON de uma fonte externa; os dados padrão são definidos diretamente no JavaScript. 
