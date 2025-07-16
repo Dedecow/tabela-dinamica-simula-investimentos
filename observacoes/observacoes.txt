@@ -3,6 +3,8 @@ PROXIMOS PASSOS::
 
 Utilizar dados remotos (ou simular com JSON): Atualmente, os investimentos sugeridos (investimentosPadrao) são definidos como um array diretamente no arquivo entrega2.js. Para atender a este critério, eles deveriam ser carregados de uma fonte remota (via fetch ou similar) ou de um arquivo JSON externo.
 
+Criar async function carregarInvestimentosDoJson() {
+
 Elimine console.log e derivados: O código ainda utiliza console.log para depuração.
 
 Link para repositório do Github (preferencial).
