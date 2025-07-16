@@ -273,6 +273,7 @@ function renderizarTabelaInvestimentos() {
     console.log('Tabela de investimentos atualizada no DOM!');
 }
 
+/*
 function carregarInvestimentosPadrao() {
     
     const investimentosPadrao = [
@@ -291,6 +292,8 @@ function carregarInvestimentosPadrao() {
     
     console.log('Investimentos padrão carregados:', investimentosPadrao);
 }
+*/
+
 function limparInvestimentos() {
     if (confirm('Tem certeza que deseja remover TODOS os seus investimentos? Esta ação não pode ser desfeita.')) {
         investimentosColetados.length = 0;
