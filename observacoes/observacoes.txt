@@ -1,21 +1,21 @@
 
 PROXIMOS PASSOS::
 
-Utilizar dados remotos (ou simular com JSON): Atualmente, os investimentos sugeridos (investimentosPadrao) são definidos como um array diretamente no arquivo entrega2.js. Para atender a este critério, eles deveriam ser carregados de uma fonte remota (via fetch ou similar) ou de um arquivo JSON externo.
+OK Utilizar dados remotos (ou simular com JSON): Atualmente, os investimentos sugeridos (investimentosPadrao) são definidos como um array diretamente no arquivo entrega2.js. Para atender a este critério, eles deveriam ser carregados de uma fonte remota (via fetch ou similar) ou de um arquivo JSON externo.
 
-Crie uma pasta data/ na raiz do seu projeto.
+OK  pasta data/ na raiz do seu projeto.
 
-crie um arquivo investimentos.json com o conteúdo JSON 
+OK  arquivo investimentos.json com o conteúdo JSON 
 
-Remover/Comentar carregarInvestimentosPadrao()
+OK Remover/Comentar carregarInvestimentosPadrao()
 
-Criar async function carregarInvestimentosDoJson() 
+OK Criar async function carregarInvestimentosDoJson() 
 
-Dentro da função inicializarApp(), substitua qualquer chamada a carregarInvestimentosPadrao() por carregarInvestimentosDoJson()
+OK Dentro da função inicializarApp(), substitua qualquer chamada a carregarInvestimentosPadrao() por carregarInvestimentosDoJson()
 
-Dentro da função garantirInvestimentosIniciais(), a chamada para carregar os investimentos iniciais aponta para carregarInvestimentosDoJson()?
+OK Dentro da função garantirInvestimentosIniciais(), a chamada para carregar os investimentos iniciais aponta para carregarInvestimentosDoJson()?
 
-addEventListener para carregarPadroesBtn --> chama carregarInvestimentosDoJson() ou carregarInvestimentosPadrao()?
+OK addEventListener para carregarPadroesBtn --> chama carregarInvestimentosDoJson() ou carregarInvestimentosPadrao()?
 
 Elimine console.log e derivados: O código ainda utiliza console.log para depuração.
 
