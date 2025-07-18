@@ -36,7 +36,7 @@ adicionarInvestimentoBtn.addEventListener('click', () => {
 
 carregarPadroesBtn.addEventListener('click', () => {
     if (confirm('Isso substituirá seus investimentos atuais pelos padrões. Deseja continuar?')) {
-        carregarInvestimentosPadrao();
+        carregarInvestimentosDoJson();
     }
 });
 
@@ -293,6 +293,19 @@ function carregarInvestimentosPadrao() {
     console.log('Investimentos padrão carregados:', investimentosPadrao);
 }
 */
+async function carregarInvestimentosDoJson() {
+    try {
+        const response = await fetch('./data/investimentos.json');
+        if (!response.ok) throw new Error('Falha ao carregar dados');
+        const dados = await response.json();
+        
+        investimentosColetados.length = 0;
+        preencherArrayComDadosLocalStorage(dados);
+        renderizarTabelaInvestimentos();
+    } catch (error) {
+        console.error('Erro ao carregar investimentos:', error);
+    }
+}
 
 function limparInvestimentos() {
     if (confirm('Tem certeza que deseja remover TODOS os seus investimentos? Esta ação não pode ser desfeita.')) {
@@ -306,10 +319,16 @@ function limparInvestimentos() {
 function tentarCarregarDadosPersistidos() {
     carregarInvestimentosDoLocalStorage();
 }
-
+/*
 function garantirInvestimentosIniciais() {
     if (investimentosColetados.length === 0) {
         carregarInvestimentosPadrao();
+    }
+}
+*/
+async function garantirInvestimentosIniciais() {
+    if (investimentosColetados.length === 0) {
+        await carregarInvestimentosDoJson();
     }
 }
 
